@@ -1,19 +1,17 @@
 #include "get_next_line.h"
 
-char *ft_read_a_line(char *save, int fd)
+char *ft_read_a_line(static char *save, int fd)
 {
 	char	*tmp;
     int		b_read;
 
 	b_read = 1;
+	tmp = malloc(BUFFER_SIZE + 1)
 	while (!ft_strchr(save, '\n') && b_read != 0)
 	{
 		b_read = read(fd, tmp, BUFFER_SIZE);
 		if (b_read == -1)
-		{
-			free(tmp);
 			return (NULL);
-		}
 		tmp[b_read] == '\0';
 		save = ft_strjoin(save, tmp);
 	}
