@@ -72,11 +72,6 @@ static char *new_save(char *save)
 	i = 0;
 	while(save[i] && save[i] != '\n')
 		i++;
-	if (!save[i])
-	{
-		free(save);
-		return(NULL);
-	}
 	rv = malloc(ft_strlen(save) - i + 1);
 	if (!rv)
 		return(NULL);
@@ -96,7 +91,7 @@ char *get_next_line(int fd)
 
 	if (fd < 0 || fd > 1023)
 		return(NULL);
-	save = ft_read_a_line(save, fd);
+	save = read_mini_line(save, fd);
 	if (!save)
 		return (NULL);
 	buffer = get_curr_line(save);

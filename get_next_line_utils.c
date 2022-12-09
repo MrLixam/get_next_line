@@ -56,18 +56,23 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	if (!s1)
 	{
-		s1 = malloc(1);
-		s1[0] = '\0'
+		rv = malloc(ft_strlen(s2) + 1);
+		if (!rv)
+			return (NULL);
+		ft_memcpy(rv, s2, ft_strlen(s2) + 1);
+		if(rv[ft_strlen(rv) + 1] != '\0')
+			rv[ft_strlen(rv) + 1] = '\0';
+		return (rv);
 	}
-	if (!s1 || !s2)
+	if (!s2)
 		return(NULL);
-	rv = (char *)malloc(1 + ft_strlen(s1) + ft_strlen(s2));
+	rv = malloc(1 + ft_strlen(s1) + ft_strlen(s2));
 	if (!rv)
 		return (NULL);
 	ft_memcpy(rv, s1, ft_strlen(s1));
 	ft_memcpy(rv + ft_strlen(s1), s2, ft_strlen(s2) + 1);
 	free(s1);
-	if (rv[1 + ft_strlen(s1) + ft_strlen(s2)] != '\0')
-		rv[1 + ft_strlen(s1) + ft_strlen(s2)] = '\0';
+	if (rv[1 ft_strlen(rv)] != '\0')
+		rv[1 + ft_strlen(rv)] = '\0';
 	return (rv);
 }
