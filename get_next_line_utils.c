@@ -54,6 +54,13 @@ char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*rv;
 
+	if (!s1)
+	{
+		s1 = malloc(1);
+		s1[0] = '\0'
+	}
+	if (!s1 || !s2)
+		return(NULL);
 	rv = (char *)malloc(1 + ft_strlen(s1) + ft_strlen(s2));
 	if (!rv)
 		return (NULL);

@@ -14,7 +14,7 @@
 #include <fcntl.h>
 #include <stdio.h>
 
-static char	*ft_read_a_line(char *save, int fd)
+static char	*read_mini_line(char *save, int fd)
 {
 	char	*tmp;
 	int		b_read;
@@ -30,10 +30,7 @@ static char	*ft_read_a_line(char *save, int fd)
 			return (NULL);
 		}
 		tmp[b_read] = '\0';
-		if (!save)
-			save = ft_substr(tmp, 0, ft_strlen(tmp));
-		else
-			save = ft_strjoin(save, tmp);
+		save = ft_strjoin(save, tmp);
 	}
 	free(tmp);
 	return (save);
@@ -101,10 +98,7 @@ char *get_next_line(int fd)
 		return(NULL);
 	save = ft_read_a_line(save, fd);
 	if (!save)
-	{
-		free(save);
 		return (NULL);
-	}
 	buffer = get_curr_line(save);
 	save = new_save(save);
 	return (buffer);
