@@ -67,34 +67,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	ft_memcpy(rv, s1, ft_strlen(s1));
 	ft_memcpy(rv + ft_strlen(s1), s2, ft_strlen(s2) + 1);
 	free(s1);
-	return (rv);
-}
-
-char	*ft_substr(char *s, unsigned int start, size_t len)
-{
-	char			*rv;
-	unsigned int	i;
-
-	if (s == NULL)
-		return (NULL);
-	if (ft_strlen(s) < start)
-	{
-		rv = malloc(1);
-		rv[0] = '\0';
-		return (rv);
-	}
-	if (ft_strlen(s) >= (start + len))
-		rv = malloc(len + 1);
-	else
-		rv = malloc(1 + len - ((start + len) - ft_strlen(s)));
-	if (!rv)
-		return (NULL);
-	i = 0;
-	while ((i < len) && s[start + i])
-	{
-		rv[i] = s[start + i];
-		i++;
-	}
-	rv[i] = '\0';
+	if (rv[1 + ft_strlen(s1) + ft_strlen(s2)] != '\0')
+		rv[1 + ft_strlen(s1) + ft_strlen(s2)] = '\0';
 	return (rv);
 }
